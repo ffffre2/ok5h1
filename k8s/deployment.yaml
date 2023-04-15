@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ok511
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ok511
+  template:
+    metadata:
+      labels:
+        app: ok511
+    spec:
+      containers:
+      - image: okteto.dev/ok511:latest
+        name: ok511
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: ParameterSSENCYPT
+          value: "chacha20-ietf-poly1305"
+        - name: AUUID
+          value: "0281ca92-3c76-4e85-80b8-e73c77eb1059"
